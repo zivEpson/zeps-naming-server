@@ -1,4 +1,9 @@
 pipeline {
+environment {
+        registry = "ze888899/zeps"
+        registryCredential = 'dockerhub_id'
+        dockerImage = 'naming-service'
+    }
     agent any
 
     stages {
@@ -8,7 +13,14 @@ pipeline {
                 sh './mvnw clean package'
             }
         }
-    }
+        stage('Building our image') {
+            steps {
+                script {
+                       dockerImage = docker.build registry + ":$BUILD_NUMBER"
+                    }
+                }
+            }
+        }
 
      post {
             always {
