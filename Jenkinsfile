@@ -20,12 +20,13 @@ environment {
                     }
                 }
             }
+        stage('Cleaning previous image') {
+             steps {
+                 sh "docker image prune -f"
+             }
         }
-         stage('Cleaning previous image') {
-            steps {
-                sh "docker image prune -f"
-            }
-          }
+
+    }
 
      post {
             always {
