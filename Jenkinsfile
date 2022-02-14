@@ -1,8 +1,8 @@
 pipeline {
 environment {
-        registry = "ze888899/zeps"
+        registry = "ze888899/zeps-naming-server"
         registryCredential = 'dockerhub_id'
-        dockerImage = 'naming-service'
+        dockerImage = ''
     }
     agent any
 
